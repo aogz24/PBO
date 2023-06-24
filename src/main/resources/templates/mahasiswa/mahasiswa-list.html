@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{fragments/main_layout}">
+<body>
+	<div layout:fragment="content">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Anggota SBC</h6>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<div id="dataTable_wrapper"
+						class="dataTables_wrapper dt-bootstrap4">
+						<div class="row">
+							<div id="dataTable_filter" class="dataTables_filter">
+								<label>Search:<input type="search"
+									class="form-control form-control-sm" placeholder="Cari..."
+									aria-controls="dataTable" id="searchInput"></label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table table-bordered dataTable" id="dataTable"
+									width="100%" cellspacing="0" role="grid"
+									aria-describedby="dataTable_info" style="width: 100%;">
+									<thead>
+										<tr>
+											<td class="text-center">Nim</td>
+											<td class="text-center">Nama</td>
+											<td class="text-center">Kelas</td>
+											<td class="text-center">Angkatan</td>
+											<td class="text-center">Alasan Masuk</td>
+											<td class="text-center" th:if="${isAdmin}">Action</td>
+										</tr>
+									</thead>
+									<tbody id="tableBody">
+										<tr th:each="mhs : ${mahasiswa}" th:fragment="table-row">
+											<td th:text="${mhs.nim}"></td>
+											<td th:text="${mhs.nama}"></td>
+											<td th:text="${mhs.kelas}"></td>
+											<td th:text="${mhs.angkatan}"></td>
+											<td th:text="${mhs.alasan}"></td>
+											<td class="text-center"><a
+												th:href="@{/mahasiswa/edit/{id} (id=${mhs.id})}"
+												th:if="${isAdmin}" class="btn btn-primary"
+												style="width: 100px">Edit</a> <a
+												th:href="@{/mahasiswa/delete/{id} (id=${mhs.id})}"
+												th:if="${isAdmin}" class="btn btn-danger"
+												style="width: 100px">Delete</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="new"
+			class="btn btn-primary float-right rounded-circle float-animation">+</a>
+			
+		<script>
+	    document.getElementById("searchInput").addEventListener("input", function() {
+	        var searchValue = this.value.toLowerCase();
+	        var tableRows = document.getElementById("tableBody").getElementsByTagName("tr");
+	
+	        for (var i = 0; i < tableRows.length; i++) {
+	            var row = tableRows[i];
+	            var cells = row.getElementsByTagName("td");
+	            var found = false;
+	
+	            for (var j = 0; j < cells.length; j++) {
+	                var cellText = cells[j].textContent.toLowerCase();
+	                
+	                if (cellText.includes(searchValue)) {
+	                    found = true;
+	                    break;
+	                }
+	            }
+	
+	            if (found) {
+	                row.style.display = "";
+	            } else {
+	                row.style.display = "none";
+	            }
+	        }
+	    });
+	</script>
+		
+
+	</div>
+</body>
+</html>

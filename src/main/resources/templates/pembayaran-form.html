@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{fragments/main_layout}">
+<body>
+	<div layout:fragment="content">
+		<h1>Pembayaran Kas</h1>
+		<div class="card o-hidden border-o shadow-lg my-5">
+			<div class="card-body" p-0>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="p-5">
+							<form th:action="@{/pembayaran}" th:object="${pembayaran}"
+								method="post" enctype="multipart/form-data">
+								<div class="form-grop row">
+									<div class="col-sm-3">Nama</div>
+									<div class="col-sm-8 mb-3 mb-sm-0">
+										<input type="text" id="nama" th:field="*{nama}" required
+											class="form-control form-control-user">
+									</div>
+								</div>
+								<div class="form-grop row">
+									<div class="col-sm-3">Jumlah Pembayaran:</div>
+									<div class="col-sm-7 mb-3 mb-sm-0">
+										<input type="number" id="amount" th:field="*{amount}" required
+											class="form-control form-control-user">
+									</div>
+									<div class="form-grop row">
+										<div class="col-sm-3">Bukti pembayaran</div>
+										<div class="col-sm-7 mb-3 mb-sm-0">
+											<input type="file" id="imageFile" name="imageFile"
+												accept="image/*" required
+												class="form-control form-control-user">
+										</div>
+
+									</div>
+									<p></p>
+									<div class="form-grop row">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-7 mb-3 mb-sm-0">
+											<input type="submit" value="submit" class="btn btn-success">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

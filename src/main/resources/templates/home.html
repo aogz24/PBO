@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{fragments/main_layout}">
+
+<body>
+
+	<div layout:fragment="content" class="row">
+	<h1>Selamat datang, <span th:text="${username}"></span></h1>
+	<p>Silahkan pilih menu yang sesuai</p>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">Absen</div>
+            <div class="card-body">
+                <h5 class="card-title">Absen</h5>
+                <p class="card-text">Klik tombol di bawah ini untuk melakukan absen.</p>
+                <a th:href="@{'/absen?username=' + ${username}}" class="btn btn-primary">Absen</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">Absen</div>
+            <div class="card-body">
+                <h5 class="card-title">Daftar absensi</h5>
+                <p class="card-text">Lihat daftar presensi</p>
+                <a href="/list-absensi" class="btn btn-primary">Absen</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">Daftar</div>
+            <div class="card-body justify-content-center align-items-center">
+                <h5 class="card-title">Daftar</h5>
+                <p class="card-text">Daftar untuk masuk ke dlam UKM SBC</p>
+                <a href="/mahasiswa/new" class="btn btn-primary">Daftar</a>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">List Mahasiswa</div>
+            <div class="card-body justify-content-center align-items-center">
+                <h5 class="card-title">List Mahasiswa</h5>
+                <p class="card-text">Tampilkan anggota UKM SBC</p>
+                <a href="/mahasiswa/list" class="btn btn-primary">List Mahasiswa</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">List Mahasiswa</div>
+            <div class="card-body justify-content-center align-items-center">
+                <h5 class="card-title">Pembayaran Kas</h5>
+                <p class="card-text">Klik tombol untuk membayar kas</p>
+                <a href="/pembayaran" class="btn btn-primary">List Mahasiswa</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header text-white bg-primary">List Mahasiswa</div>
+            <div class="card-body justify-content-center align-items-center">
+                <h5 class="card-title">Status Pembayaran kas</h5>
+                <p class="card-text">Lihat status pembayaran kas</p>
+                <a href="/status-pembayaran" class="btn btn-primary">List Mahasiswa</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+</body>
+
+</html>

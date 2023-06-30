@@ -67,7 +67,7 @@ public class Pembayaran {
 		if(this.paid==true){
 			this.paid=false;
 		} else {
-			this.paid=false;
+			this.paid=true;
 		}
     }
     
